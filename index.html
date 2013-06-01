@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src='slender.min.js'></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js" ></script>
+<title>Title of the document</title>
+<style>
+</style>
+</head>
+
+<body>
+aaaaaa
+<script type="text/javascript">
+var sl = new Slender();
+sl.register('newModel', {
+  urls: {
+    getURL: '/one.json',
+    putURL: '/one.json',
+    delURL: '/one.json'
+  }
+}, function(err, data) {
+  console.log(err, data);
+  sl.pull('newModel', function(err, data) {
+    console.log(err, JSON.parse(data));
+  });
+  }
+  );
+</script>
+</body>
+
+</html>
