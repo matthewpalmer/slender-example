@@ -9,22 +9,55 @@
 </head>
 
 <body>
-aaaaaa
+  Open your console, we're logging.
+<button onclick='tregister()'>register</button>
+<button onclick='tpull()'>pull</button>
+<button onclick='tupdatelocal()'>updatelocal</button>
+<button onclick='tupdateremote()'>updateremote</button>
+
 <script type="text/javascript">
 var sl = new Slender();
-sl.register('newModel', {
+function tregister() {
+sl.register('modelThree', {
   urls: {
-    getURL: '/one.json',
-    putURL: '/one.json',
-    delURL: '/one.json'
+    getURL: '/modelThree.json',
+    putURL: '/modelThree.json',
+    delURL: '/modelThree.json'
+  },
+  data: {
+
   }
 }, function(err, data) {
   console.log(err, data);
-  sl.pull('newModel', function(err, data) {
-    console.log(err, JSON.parse(data));
   });
-  }
-  );
+}
+function tpull() {
+  sl.pull('modelThree', function(err, data) {
+    console.log(err, data);
+  });
+}
+function tupdatelocal() {
+  sl.localstore.retrieve('modelThree', function(err, data) {
+    console.log('ls ', JSON.parse(data));
+    var changedObj = JSON.parse(data);
+    changedObj.data.hey = getRandomInt(1, 10);
+    sl.localstore.store('modelThree', JSON.stringify(changedObj), function(err, data) {
+      console.log('ch ', err, data);
+    });
+  });
+}
+function tupdateremote() {
+  sl.updateRemote('modelThree', {
+    one: 'this is the first',
+    two: 'this is the second'
+  }, function(err, data) {
+    console.log('after updated ', err, JSON.parse(data));
+  });
+}
+
+function getRandomInt (min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
 </script>
 </body>
 

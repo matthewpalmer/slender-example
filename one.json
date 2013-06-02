@@ -1,1 +1,1 @@
-{"hey": "one"}
+{"{\"urls\":{\"getURL\":\"/one.json\",\"putURL\":\"/one.json\",\"delURL\":\"/one.json\"},\"data\":{\"{\\\"urls\\\":{\\\"getURL\\\":\\\"/one.json\\\",\\\"putURL\\\":\\\"/one.json\\\",\\\"delURL\\\":\\\"/one.json\\\"},\\\"data\\\":{\\\"{\\\\\\\"urls\\\\\\\":{\\\\\\\"getURL\\\\\\\":\\\\\\\"/one.json\\\\\\\",\\\\\\\"putURL\\\\\\\":\\\\\\\"/one.json\\\\\\\",\\\\\\\"delURL\\\\\\\":\\\\\\\"/one.json\\\\\\\"}}\\\":\\\"\\\",\\\"hey\\\":8}}\":\"\",\"hey\":9}}":""}

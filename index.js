@@ -1,6 +1,7 @@
 var http = require('http');
 var fs = require('fs');
 var restify = require('restify');
+var postdata = require('postdata');
 
 var server = restify.createServer();
 server.get('/', function(req, res) {
@@ -33,16 +34,15 @@ server.get('/:path', function(req, res) {
   stream.pipe(res);
 });
 
-server.put('/file/:path', function(req, res) {
-  console.log(req, res); //should have data passed in
-  var data;
-  fs.writeFile("/file"+path, "Hey there!", function(err) {
-    if(err) {
-        console.log(err);
-    } else {
-        console.log("The file was saved!");
-    }
-}); 
+server.put('/:path', function(req, res) {
+  //console.log(req, res); //should have data passed in
+  postdata(req, res, function(err, data) {
+    console.log('data is ', data);
+    fs.writeFile(req.params.path, JSON.stringify(data), function(err) {
+      if (err) console.log('err');
+      console.log('saved ');
+    })
+  });
 });
 
 server.listen(3000, function() {
